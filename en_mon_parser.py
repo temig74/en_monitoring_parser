@@ -21,7 +21,14 @@ def main():
         cols = elem.find_all('td')
         if cols[3].text in ('в', 'r') and cols[4].text not in ('Пройден по таймауту', 'Passed by timeout'):
             a = cols[2].find_all('a')
-            rows.append([cols[1].text, "'"+a[0].text if a[0].text[0] == "=" else a[0].text, "'"+a[1].text if a[1].text[0] == "=" else a[1].text, "'"+cols[4].text.lower() if cols[4].text[0] == "=" else cols[4].text.lower()])
+            level = cols[1].text
+            player = "'" + a[1].text if a[1].text[0] == "=" else a[1].text
+            if len(a[0].text) > 0:
+                team = "'"+a[0].text if a[0].text[0] == "=" else a[0].text
+            else:
+                team = player
+            code = "'"+cols[4].text.lower() if cols[4].text[0] == "=" else cols[4].text.lower()
+            rows.append([level, team, player, code])
 
     df = pd.DataFrame(rows, columns=['level', 'team', 'player', 'code'])
     df['level'] = df['level'].astype(int)
