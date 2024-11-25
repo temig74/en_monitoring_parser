@@ -5,9 +5,9 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser('Process input HTML file and output excel file\nExample: en_mon_parser input.htm output.xlsx\n')
-    parser.add_argument('input_filename', help='Path to the input HTML file')
-    parser.add_argument('output_filename', help='Path to the output Excel file')
+    parser = argparse.ArgumentParser('Process input HTML file and output excel file')
+    parser.add_argument('input_filename', help='Path to the input HTML file, e.g. input.htm')
+    parser.add_argument('output_filename', help='Path to the output Excel file, e.g. output.xlsx')
     args = parser.parse_args()
     input_filename = args.input_filename
     output_filename = args.output_filename
