@@ -14,7 +14,8 @@ def main():
 
     print('Temig monitoring parser 1.0\nParsing html file...')
     with open(input_filename, 'r', encoding="utf-8") as f:
-        html = BeautifulSoup(f.read(), 'html.parser')
+        #html = BeautifulSoup(f.read(), 'html.parser')
+        html = BeautifulSoup(f.read(), 'lxml')
 
     rows = []
     for elem in html.find_all('tr'):
